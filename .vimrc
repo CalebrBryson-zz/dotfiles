@@ -1,45 +1,29 @@
 " VIM SETTINGS before plugins
 set nocompatible              " be iMproved, required
 filetype off                  " required
-let mapleader = ","
 " set numberlines
 :set number
 :set relativenumber
 :set showmatch
-
+" This is meant so I dont have to set the full directory path when creating
+" files. with :e newFile.txt
+:set autochdir
 " remapping leader keys
 nnoremap <SPACE> <nop>
 let mapleader = " "
-
-:nnoremap <leader>d yiw/\<<C-r>0\><CR>N
-
-" Mappings to access buffers (don't use "\p" because a
-" delay before pressing "p" would accidentally paste).
-" \l       : list buffers
-" \b \f \g : go back/forward/last-used
-" \1 \2 \3 : go to buffer 1/2/3 etc
-nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>b :bp<CR>
-nnoremap <TAB> :bn<CR>
-nnoremap <Leader>g :e#<CR>
-nnoremap <Leader>1 :1b<CR>
-nnoremap <Leader>2 :2b<CR>
-nnoremap <Leader>3 :3b<CR>
-nnoremap <Leader>4 :4b<CR>
-nnoremap <Leader>5 :5b<CR>
-nnoremap <Leader>6 :6b<CR>
-nnoremap <Leader>7 :7b<CR>
-nnoremap <Leader>8 :8b<CR>
-nnoremap <Leader>9 :9b<CR>
-nnoremap <Leader>0 :10b<CR>
+" this is a dumb thing I did to shortcut a replace symbol type functionality.
+" It yanks a word, add it in a search, and navigates backwards because it will
+" dinf the next occurance instead of the one you are on. Then you can replace
+" with gcn which will 
+:nnoremap <leader>d *N
 
 " Split Navigation
-nnoremap <C-w>h :wincmd h<cr>
-nnoremap <C-w>j :wincmd j<CR>
-nnoremap <C-w>k :wincmd k<CR>
-nnoremap <C-w>l :wincmd l<CR>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
 
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>= :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " highlighting extra whitespace
 set list          " Display unprintable characters f12 - switches
@@ -54,6 +38,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'jacoborus/tender.vim'
+Plugin 'tpope/vim-unimpaired'
 " Color Scheme Plugin
 Plugin 'trevordmiller/nova-vim'
 Plugin 'morhetz/gruvbox'
@@ -70,6 +55,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-surround'
+Plugin 'Galooshi/vim-import-js'
+" I MANUALLY INSTALLED python-mode
 "CSS/HTML Plugins
 "Code Snippets
 Plugin 'mattn/emmet-vim'
@@ -100,15 +87,14 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Theme
 syntax enable
-colorscheme nova
+colorscheme gruvbox
 
 set background=dark
 " let g:gruvbox_contrast_dark='soft'
 " Tab and space settings
 set expandtab
-set shiftwidth=4
-set softtabstop=4
-
+set shiftwidth=2
+set softtabstop=2
 
 "PLUGIN SETTINGS
 "Syntastic
@@ -155,3 +141,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 "Signify Settings
 let g:signify_vcs_list = [ 'git', 'hg' ]
+
+"Python Mode :help pymode
+let g:pymode_python = 'python3'
