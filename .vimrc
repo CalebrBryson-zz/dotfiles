@@ -42,6 +42,7 @@ Plugin 'tpope/vim-unimpaired'
 " Color Scheme Plugin
 Plugin 'trevordmiller/nova-vim'
 Plugin 'morhetz/gruvbox'
+Plugin 'chriskempson/tomorrow-theme'
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
 " Fuzzy search
@@ -62,6 +63,8 @@ Plugin 'Galooshi/vim-import-js'
 Plugin 'mattn/emmet-vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'cakebaker/scss-syntax.vim'
+" File searchign
+Plugin 'mileszs/ack.vim'
 "  All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -90,11 +93,11 @@ syntax enable
 colorscheme gruvbox
 
 set background=dark
-" let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_dark='soft'
 " Tab and space settings
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 
 "PLUGIN SETTINGS
 "Syntastic
@@ -130,7 +133,7 @@ nnoremap <leader>f :ALEFix<cr>
 "IGNORE FILES AND DIRECTORIES
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_STORE\|hg|git|bin\|karma_test_results\|jest-coverage\'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_STORE\|bin\|hg|git|karma_test_results\|jest-coverage\'
 
 "Airline
 " Set this. Airline will handle the rest.
@@ -144,3 +147,6 @@ let g:signify_vcs_list = [ 'git', 'hg' ]
 
 "Python Mode :help pymode
 let g:pymode_python = 'python3'
+
+" Ack Config to use the_silver_searcher
+let g:ackprg = 'ag --vimgrep'
