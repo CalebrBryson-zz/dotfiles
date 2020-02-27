@@ -17,6 +17,17 @@ let mapleader = " "
 " with gcn which will 
 :nnoremap <leader>d *N
 
+" Here is another silly useful peice of functionality. maybe reconsider the
+" command - Close my open buffer but dont close the split
+" The concept here is that deleting an unopen buffer does not close the split.
+" So we navigate away and delete it using the previous buffer commands
+" :nmap ,d - normalmode remap ,d command
+" b# - switch to previous buffer
+" <bar>  - (appends commands) then 
+" bd# - delete the previous buffer switched away from
+" <CR> - enter
+:nmap ,d :b#<bar>bd#<CR>
+
 " Split Navigation
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
@@ -39,6 +50,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'jacoborus/tender.vim'
 Plugin 'tpope/vim-unimpaired'
+" GIT!
+Plugin 'tpope/vim-fugitive'
 " Color Scheme Plugin
 Plugin 'trevordmiller/nova-vim'
 Plugin 'morhetz/gruvbox'
@@ -56,6 +69,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'Galooshi/vim-import-js'
 " I MANUALLY INSTALLED python-mode
 "CSS/HTML Plugins
